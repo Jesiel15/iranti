@@ -1,9 +1,7 @@
 package iranti.entities;
 
-import javax.faces.bean.ManagedBean;
 import javax.persistence.Entity;
 
-@ManagedBean
 @Entity
 public class Administrador extends Jogador{
 	public Administrador() {

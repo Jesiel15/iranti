@@ -1,15 +1,13 @@
 package iranti.entities;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
-@ManagedBean
 @Entity
 public class Iranti {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String nome;
 	private String descricao;
 	private Date dataCriacao;

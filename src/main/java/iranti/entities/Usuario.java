@@ -1,13 +1,11 @@
 package iranti.entities;
-import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
-@ManagedBean
 @Entity
 public class Usuario {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String nome;
 	private String sobrenome;
 	private String email;
