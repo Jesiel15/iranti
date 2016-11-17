@@ -1,19 +1,25 @@
-package iranti.entities;
+package iranti.entity;
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity
-public class Peca {
-	
+public class Peca implements Serializable{
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	@Column
 	private Date dataCriacao;
+	@Column
 	private Date dataModificacao;
+	@Column
 	private String local;
+	private static final long serialVersionUID = 1L;
 	
+	public Peca() {
+		super();
+    }
 	public Integer getId() {
 		return id;
 	}
@@ -38,11 +44,5 @@ public class Peca {
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	
-	public Peca() {
-    		
-    }
-	
-	
-	
+
 }

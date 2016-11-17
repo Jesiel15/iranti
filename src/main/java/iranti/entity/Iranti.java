@@ -1,20 +1,26 @@
-package iranti.entities;
+package iranti.entity;
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity
-public class Iranti {
+public class Iranti implements Serializable{
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column
 	private String nome;
+	@Column
 	private String descricao;
+	@Column
 	private Date dataCriacao;
+	@Column
 	private Date ultimaModificacao;
 	
+	private static final long serialVersionUID = 1L;
 	public Iranti() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public String getNome() {
