@@ -5,11 +5,13 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
+@Table(name="iranti")
 public class Iranti implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="iranti_id")
 	private Integer id;
-	@Column
+	@Column(name="iranti_name")
 	private String nome;
 	@Column
 	private String descricao;
@@ -54,4 +56,13 @@ public class Iranti implements Serializable{
 	public void setUltimaModificacao(Date ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 }
