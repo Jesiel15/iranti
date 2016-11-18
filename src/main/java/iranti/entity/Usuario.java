@@ -1,10 +1,10 @@
-package iranti.entities;
+package iranti.entity;
 import javax.persistence.*;
 
 @Entity
 public class Usuario {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String sobrenome;

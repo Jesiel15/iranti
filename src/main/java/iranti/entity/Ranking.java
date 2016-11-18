@@ -1,4 +1,4 @@
-package iranti.entities;
+package iranti.entity;
 
 public class Ranking {
 	

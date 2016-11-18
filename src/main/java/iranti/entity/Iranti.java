@@ -1,20 +1,28 @@
-package iranti.entities;
+package iranti.entity;
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity
-public class Iranti {
+@Table(name="iranti")
+public class Iranti implements Serializable{
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="iranti_id")
 	private Integer id;
+	@Column(name="iranti_name")
 	private String nome;
+	@Column
 	private String descricao;
+	@Column
 	private Date dataCriacao;
+	@Column
 	private Date ultimaModificacao;
 	
+	private static final long serialVersionUID = 1L;
 	public Iranti() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public String getNome() {
@@ -48,4 +56,13 @@ public class Iranti {
 	public void setUltimaModificacao(Date ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 }

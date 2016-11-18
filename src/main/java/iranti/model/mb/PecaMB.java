@@ -1,48 +1,47 @@
-package iranti.entities;
+package iranti.model.mb;
+
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 
-@Entity
-public class Peca {
-	
-	@Id
-	@GeneratedValue
-	private Integer id;
-	
+import iranti.entity.Peca;
+
+
+@ManagedBean
+@SessionScoped
+public class PecaMB {
+	private Peca peca;
 	private Date dataCriacao;
 	private Date dataModificacao;
 	private String local;
 	
-	public Integer getId() {
-		return id;
+	public PecaMB() {
+		super();
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
+
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
+
 	public Date getDataModificacao() {
 		return dataModificacao;
 	}
+
 	public void setDataModificacao(Date dataModificacao) {
 		this.dataModificacao = dataModificacao;
 	}
+
 	public String getLocal() {
 		return local;
 	}
+
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	
-	public Peca() {
-    		
-    }
-	
-	
-	
+		
 }

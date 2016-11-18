@@ -1,29 +1,44 @@
-package iranti.entities;
+package iranti.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
-public class Jogo {
+@Table(name="jogo")
+public class Jogo implements Serializable{
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="jogo_id")
 	private Integer id;
-
+	@Column
 	private Date inicio;
+	@Column
 	private Date fim;
+	@Column
 	private Integer Tipo;
-
-	enum Status {
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	public enum Status {
 		Concluido, Desistente
-	}	Status status;
-
-	enum Dificuldade {
+	}
+	@Enumerated(EnumType.STRING)
+	private Dificuldade dificuldade;
+	public enum Dificuldade {
 		Facil, Medio, Dificil
-	}	Dificuldade dificuldade;
-
+	}
+	private static final long serialVersionUID = 1L;
 	
+	public Jogo() {
+		super();
+	}
 	
 	public Integer getId() {
 		return id;
@@ -55,14 +70,6 @@ public class Jogo {
 
 	public void setTipo(Integer tipo) {
 		Tipo = tipo;
-	}
-
-	public Dificuldade getDificuldade() {
-		return dificuldade;
-	}
-
-	public void setDificuldade(Dificuldade dificuldade) {
-		this.dificuldade = dificuldade;
 	}
 
 }

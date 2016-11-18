@@ -1,11 +1,15 @@
-package iranti.entities;
+package iranti.entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 
 @Entity
-public class Administrador extends Jogador{
+public class Administrador extends Jogador implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	public Administrador() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	public boolean isAdmin() {
