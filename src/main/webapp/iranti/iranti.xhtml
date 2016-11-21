@@ -4,11 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login</title>
+	<title>Iranti</title>
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -21,25 +20,23 @@
 	<ui:insert name="cabecalho">
 		<ui:include src="/cabecalho.html" />
 	</ui:insert>
-	<h:form>
-		<p:messages id="messages" />
-		<p:panelGrid columns="2">
-			<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
-			<p:inputText id="nomeUsuario" required="true"
-				value="#{LoginMB.usuario.nomeUsuario}" />
-
-			<p:outputLabel for="senha" value="Senha:" />
-			<p:password id="senha" required="true"
-				value="#{LoginMB.usuario.senha}" />
-
-			<p:commandButton value="Enviar" icon="ui-icon-star"
-				action="#{loginMB.Enviar}" ajax="false">
-			</p:commandButton>
-
-		</p:panelGrid>
-	</h:form>
+	<div align="center">
+		<h1>Iranti Project</h1>
+		<h:form>
+			<div class="iranti-btn">
+				<h:commandButton class="btn btn-primary" value="Criar Iranti"
+					action="#{irantiMB.criarIranti}" />
+				<h:commandButton class="btn btn-warning" value="Editar meu Iranti"
+					action="#{irantiMB.editarIranti}" />
+				<h:commandButton class="btn btn-success" value="Jogar Agora"
+					action="#{irantiMB.jogarAgora}" />
+			</div>
+		</h:form>
+		<h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
+	</div>
 	<ui:insert name="rodape">
 		<ui:include src="/rodape.html" />
 	</ui:insert>
+
 </h:body>
 </html>

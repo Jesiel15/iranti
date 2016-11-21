@@ -5,7 +5,9 @@
 	<persistence-unit name="iranti" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>iranti.entity.Usuario</class>
+		<class>iranti.entity.Jogador</class>
 		<class>iranti.entity.Iranti</class>
+		<class>iranti.entity.Administrador</class>
 		<class>iranti.entity.Peca</class>
 		<class>iranti.entity.Jogo</class>
 		<properties>
@@ -18,20 +20,10 @@
 			<property name="hibernate.hibernate.cache.use_query_cache"
 				value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/Usuario"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="root"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/iranti" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="R" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 		</properties>
-<!-- <properties> dados da conexao -->
-<!-- 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
-<!-- 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/Usuario" /> -->
-<!-- 			<property name="javax.persistence.jdbc.user" value="root" /> -->
-<!-- 			<property name="javax.persistence.jdbc.password" value="root" /> propriedades do hibernate -->
-<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> -->
-<!-- 			<property name="hibernate.show_sql" value="true" /> -->
-<!-- 			<property name="hibernate.format_sql" value="true" /> atualiza o banco, gera as tabelas se for preciso -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
-<!-- 		</properties> -->
 	</persistence-unit>
 </persistence>
