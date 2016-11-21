@@ -12,31 +12,34 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Ranking implements Serializable{
+@SequenceGenerator(name = "RANKING_SEQUENCE", sequenceName = "RANKING_SEQUENCE", allocationSize = 1, initialValue = 0)
+@Table(name = "RANKING")
+public class Ranking implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ranking_id", nullable = false, unique = true)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RANKING_SEQUENCE")
+	@Column(name = "Ranking_Id", nullable = false)
 	private Integer id;
-	
-	@Column
+
+	@Column(name = "Segundos")
 	private double segundos;
-	
+
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name="jogo_id", nullable=false)
-    private Jogo jogo;
-	
+	@JoinColumn(name = "Jogo_Id", nullable = false)
+	private Jogo jogo;
+
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name="iranti_id", nullable=false)
-    private Iranti iranti;
-	
+	@JoinColumn(name = "Iranti_Id", nullable = false)
+	private Iranti iranti;
+
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name="user_id", nullable=false)
-    private Usuario user;
-	
+	@JoinColumn(name = "User_Id", nullable = false)
+	private Usuario user;
+
 	public Ranking() {
-		super();
+
 	}
 
 	public Integer getId() {
@@ -78,5 +81,5 @@ public class Ranking implements Serializable{
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
-	
+
 }

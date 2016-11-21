@@ -1,31 +1,43 @@
 package iranti.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+/**
+ * @rel: 1 Usuario cria nenhum ou varios Jogos
+ * @rel: 1 Usuario joga nenhum ou varios Jogos
+ * @rel: 1 Usuario cria nenhum ou varios Irantis: Administrador
+ * @rel: 1 Usuario possui nenhum ou varios rankings
+ *
+ */
 
 @Entity
-public class Usuario {
+@SequenceGenerator(name = "USER_SEQUENCE", sequenceName = "USER_SEQUENCE", allocationSize = 1, initialValue = 0)
+@Table(name = "USUARIO")
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "user_id", nullable = false, unique = true)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQUENCE")
+	@Column(name = "User_Id", nullable = false)
+	private Integer id;
 
-	@Column(name = "username", nullable = false, unique = true)
+	@Column(name = "Username", nullable = false, unique = true)
 	private String nomeUsuario;
 
-	@Column(name = "password", nullable = false, unique = false)
+	@Column(name = "Senha", nullable = false, unique = false)
 	private String senha;
 
-	@Column(name = "lastAccess", unique = true)
-	@Temporal(TemporalType.DATE)
+	@Column(name = "Nome", nullable = false)
+	private String nome;
+
+	@Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
+	@Column(name = "Last_Access")
 	private Date ultimoAcesso;
 
-	@Column
+	@Column(name = "Email")
 	private String email;
 
 	public String getNomeUsuario() {
