@@ -18,22 +18,24 @@
 </h:head>
 <h:body>
 	<ui:insert name="cabecalho">
-		<ui:include src="cabecalho.html" />
+		<ui:include src="/cabecalho.html" />
 	</ui:insert>
 	<div align="center">
-		<fieldset>
-			<legend>Iranti Project</legend>
-			<h:form>
+		<h1>Iranti Project</h1>
+		<h:form>
+			<div class="iranti-btn">
+				<h:commandButton class="btn btn-primary" value="Criar Iranti"
+					action="#{irantiMB.criarIranti}" />
+				<h:commandButton class="btn btn-warning" value="Editar meu Iranti"
+					action="#{irantiMB.editarIranti}" />
 				<h:commandButton class="btn btn-success" value="Jogar Agora"
 					action="#{irantiMB.jogarAgora}" />
-			</h:form>
-		</fieldset>
+			</div>
+		</h:form>
+		<h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
 	</div>
-	<ui:insert name="ranking">
-		<ui:include src="ranking.xhtml" />
-	</ui:insert>
 	<ui:insert name="rodape">
-		<ui:include src="rodape.html" />
+		<ui:include src="/rodape.html" />
 	</ui:insert>
 
 </h:body>

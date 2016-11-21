@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+
+.bs-docs-footer {
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-top: 80px;
+	color: #99979c;
+	text-align: center;
+	background-color: #2a2730;
+	display: block;
+}
+
+@media ( min-width : 768px) {
+	.bs-docs-footer {
+		text-align: left;
+	}
+}
+
+.bs-docs-footer-links {
+	padding-left: 0;
+	margin-bottom: 20px;
+}
+
+.bs-docs-footer-links li {
+	display: inline-block;
+}
+
+.bs-docs-footer a {
+	color: #fff;
+}
+
+.container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media
+(
+min-width
+:
+1200px)
+{
+.container {
+	width: 1170px;
+}
+
+}
+@media
+(
+min-width
+:
+992px)
+{
+.container {
+	width: 970px;
+}
+
+}
+@media ( min-width : 768px) {
+	.container {
+		width: 750px;
+	}
+}
+
+.text-center {
+	text-align: center;
+}
+
+.copy-left {
+	display: inline-block;
+	text-align: right;
+	margin: 1px;
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: “FlipH”;
+}
+
+.iranti-btn input:first-child{
+	margin-left: 3px;
+}
+
+.iranti-btn input{
+	margin: 3px;
+}

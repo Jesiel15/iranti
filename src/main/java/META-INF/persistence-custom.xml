@@ -5,11 +5,10 @@
 	<persistence-unit name="iranti" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>iranti.entity.Usuario</class>
-		<class>iranti.entity.Jogador</class>
 		<class>iranti.entity.Iranti</class>
-		<class>iranti.entity.Administrador</class>
 		<class>iranti.entity.Peca</class>
 		<class>iranti.entity.Jogo</class>
+		<class>iranti.entity.Ranking</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 

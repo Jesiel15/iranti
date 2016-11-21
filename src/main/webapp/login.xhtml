@@ -4,10 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Iranti</title>
+	<title>Login</title>
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -18,23 +19,27 @@
 </h:head>
 <h:body>
 	<ui:insert name="cabecalho">
-		<ui:include src="cabecalho.html" />
+		<ui:include src="/cabecalho.html" />
 	</ui:insert>
-	<div align="center">
-		<fieldset>
-			<legend>Iranti Project</legend>
-			<h:form>
-				<h:commandButton class="btn btn-success" value="Jogar Agora"
-					action="#{irantiMB.jogarAgora}" />
-			</h:form>
-		</fieldset>
-	</div>
-	<ui:insert name="ranking">
-		<ui:include src="ranking.xhtml" />
-	</ui:insert>
-	<ui:insert name="rodape">
-		<ui:include src="rodape.html" />
-	</ui:insert>
+	<h:form>
+		<p:messages id="messages" />
+		<p:panelGrid columns="2">
+			<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
+			<p:inputText id="nomeUsuario" required="true"
+				value="#{LoginMB.usuario.nomeUsuario}" />
 
+			<p:outputLabel for="senha" value="Senha:" />
+			<p:password id="senha" required="true"
+				value="#{LoginMB.usuario.senha}" />
+
+			<p:commandButton value="Enviar" icon="ui-icon-star"
+				action="#{loginMB.Enviar}" ajax="false">
+			</p:commandButton>
+
+		</p:panelGrid>
+	</h:form>
+	<ui:insert name="rodape">
+		<ui:include src="/rodape.html" />
+	</ui:insert>
 </h:body>
 </html>
