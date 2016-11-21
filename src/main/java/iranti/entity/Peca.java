@@ -17,6 +17,8 @@ public class Peca implements Serializable{
 	private Date dataModificacao;
 	@Column
 	private String local;
+	@
+	private Iranti iranti;
 	private static final long serialVersionUID = 1L;
 	
 	public Peca() {

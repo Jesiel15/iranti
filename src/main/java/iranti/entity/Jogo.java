@@ -3,43 +3,57 @@ package iranti.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+/**
+ * @rel: 1 Jogo tem nenhum ou varios Rankings
+ * @rel: 1 Jogo eh de 1 e somente 1 Iranti
+ * @rel: 1 Jogo eh jogado por 1 ou varios Usuarios
+ * @rel: 1 Jogo eh criado por 1 e somente 1 Usuario
+ * 
+ */
+
 @Entity
-@Table(name="jogo")
-public class Jogo implements Serializable{
+@SequenceGenerator(name = "JOGO_SEQUENCE", sequenceName = "JOGO_SEQUENCE", allocationSize = 1, initialValue = 0)
+public class Jogo implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="jogo_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "JOGO_SEQUENCE")
+	@Column(name = "jogo_id", nullable = false, unique = true)
 	private Integer id;
-	@Column
+	
+	@Temporal(value=TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date inicio;
+	
+	@Temporal(value=TemporalType.TIMESTAMP)
 	@Column
 	private Date fim;
-	@Column
-	private Integer Tipo;
+	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Status status;
 	public enum Status {
 		Concluido, Desistente
 	}
+
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Dificuldade dificuldade;
+
 	public enum Dificuldade {
 		Facil, Medio, Dificil
 	}
-	private static final long serialVersionUID = 1L;
 	
+	@OneToOne(mappedBy="jogo")
+	@JoinColumn(name = "ranking_id")
+	private Ranking ranking;
+
 	public Jogo() {
 		super();
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -62,14 +76,6 @@ public class Jogo implements Serializable{
 
 	public void setFim(Date fim) {
 		this.fim = fim;
-	}
-
-	public Integer getTipo() {
-		return Tipo;
-	}
-
-	public void setTipo(Integer tipo) {
-		Tipo = tipo;
 	}
 
 }
