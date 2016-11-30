@@ -1,32 +1,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.ucb.iranti</groupId>
+	<groupId>iiranti</groupId>
 	<artifactId>iranti</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>iranti</name>
 	<description>iranti</description>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.4.3</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.2.3.Final</version>
+			<version>5.2.1.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -80,13 +80,29 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-     <dependency>
-      <groupId>unknown.binary</groupId>
-      <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
-      <version>SNAPSHOT</version>
-      <scope>provided</scope>
-     </dependency>
-    </dependencies>
+
+		<dependency>
+			<groupId>unknown.binary</groupId>
+			<artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
+			<version>SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/eclipse/eclipse-runtime -->
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-runtime</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.1.Final</version>
+		</dependency>
+
+	</dependencies>
 	<repositories>
 		<repository>
 			<id>prime-repo</id>
@@ -94,16 +110,16 @@
 			<url>http://repository.primefaces.org</url>
 			<layout>default</layout>
 		</repository>
-	 <repository>
-	  <id>unknown-jars-temp-repo</id>
-	  <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-	  <url>file:${project.basedir}/lib</url>
-	 </repository>
+		<repository>
+			<id>unknown-jars-temp-repo</id>
+			<name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+			<url>file:${project.basedir}/lib</url>
+		</repository>
 	</repositories>
-    <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <packaging>war</packaging>
+	<properties>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<packaging>war</packaging>
 </project>

@@ -47,15 +47,13 @@ public class Iranti implements Serializable {
     private Usuario user;
 
     public Iranti() {
-
+        this.dataCriacao = new Date(System.currentTimeMillis());
     }
 
-    public Iranti(String nome, String descricao, Date dataCriacao, Date ultimaModificacao) {
-
+    public Iranti(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.dataCriacao = dataCriacao;
-        this.ultimaModificacao = ultimaModificacao;
+        this.ultimaModificacao = new Date(System.currentTimeMillis());
     }
 
     public String getNome() {

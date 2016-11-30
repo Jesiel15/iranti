@@ -1,10 +1,10 @@
 package iranti.model.mb;
 
 import java.util.Date;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
 import iranti.entity.Peca;
+import javax.faces.bean.SessionScoped;
 
 
 @ManagedBean

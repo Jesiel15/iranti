@@ -12,107 +12,114 @@ import iranti.entity.enums.Status;
  * @rel: 1 Jogo eh de 1 e somente 1 Iranti
  * @rel: 1 Jogo eh criado por 1 e somente 1 Usuario
  * @rel: 1 Jogo eh jogado por 1 ou varios Usuarios
- * 
+ *
  */
-
 @Entity
 @SequenceGenerator(name = "JOGO_SEQUENCE", sequenceName = "JOGO_SEQUENCE", allocationSize = 1, initialValue = 0)
 @Table(name = "JOGO")
 public class Jogo implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "JOGO_SEQUENCE")
-	@Column(name = "Jogo_Id", nullable = false)
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	@Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
-	@Column(name = "Data_Inicio", nullable = false)
-	private Date inicio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "JOGO_SEQUENCE")
+    @Column(name = "Jogo_Id", nullable = false)
+    private Integer id;
 
-	@Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
-	@Column(name = "Data_Fim")
-	private Date fim;
+    @Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
+    @Column(name = "Data_Inicio", nullable = false)
+    private Date inicio;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "Status", nullable = false)
-	private Status status;
+    @Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
+    @Column(name = "Data_Fim")
+    private Date fim;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "Dificuldade", nullable = false)
-	private Dificuldade dificuldade;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "Jogador_Id")
-	private List<Usuario> jogadores;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Status", nullable = false)
+    private Status status;
 
-	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name = "Iranti_Id", nullable = false)
-	private Iranti iranti;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Dificuldade", nullable = false)
+    private Dificuldade dificuldade;
 
-	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name = "Criador_Id", nullable = false)
-	private Usuario criador;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "Jogador_Id")
+    private List<Usuario> jogadores;
 
-	public Jogo() {
+    @OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "Iranti_Id", nullable = false)
+    private Iranti iranti;
 
-	}
+    @OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "Criador_Id", nullable = false)
+    private Usuario criador;
 
-	public Status getStatus() {
-		return status;
-	}
+    public Jogo() {
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+    }
 
-	public Dificuldade getDificuldade() {
-		return dificuldade;
-	}
+    public Jogo(Status status, Dificuldade dificuldade, List<Usuario> jogadores, Iranti iranti, Usuario criador) {
+        this.status = status;
+        this.dificuldade = dificuldade;
+        this.jogadores = jogadores;
+        this.iranti = iranti;
+        this.criador = criador;
+    }
 
-	public void setDificuldade(Dificuldade dificuldade) {
-		this.dificuldade = dificuldade;
-	}
+    public Status getStatus() {
+        return status;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Dificuldade getDificuldade() {
+        return dificuldade;
+    }
 
-	public Date getInicio() {
-		return inicio;
-	}
+    public void setDificuldade(Dificuldade dificuldade) {
+        this.dificuldade = dificuldade;
+    }
 
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Date getFim() {
-		return fim;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setFim(Date fim) {
-		this.fim = fim;
-	}
+    public Date getInicio() {
+        return inicio;
+    }
 
-	public Iranti getIranti() {
-		return iranti;
-	}
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
+    }
 
-	public void setIranti(Iranti iranti) {
-		this.iranti = iranti;
-	}
+    public Date getFim() {
+        return fim;
+    }
 
-	public Usuario getCriador() {
-		return criador;
-	}
+    public void setFim(Date fim) {
+        this.fim = fim;
+    }
 
-	public void setCriador(Usuario criador) {
-		this.criador = criador;
-	}
+    public Iranti getIranti() {
+        return iranti;
+    }
+
+    public void setIranti(Iranti iranti) {
+        this.iranti = iranti;
+    }
+
+    public Usuario getCriador() {
+        return criador;
+    }
+
+    public void setCriador(Usuario criador) {
+        this.criador = criador;
+    }
 
 }

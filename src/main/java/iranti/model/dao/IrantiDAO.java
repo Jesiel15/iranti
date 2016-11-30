@@ -5,83 +5,83 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import iranti.entity.Iranti;
 
 public class IrantiDAO {
-	private static IrantiDAO instance;
-	protected EntityManager entityManager;
 
-	public static IrantiDAO getInstance() {
-		if (instance == null) {
-			instance = new IrantiDAO();
-		}
+    private static IrantiDAO instance;
+    protected EntityManager entityManager;
 
-		return instance;
-	}
+    public static IrantiDAO getInstance() {
+        if (instance == null) {
+            instance = new IrantiDAO();
+        }
 
-	private IrantiDAO() {
-		entityManager = getEntityManager();
-	}
+        return instance;
+    }
 
-	private EntityManager getEntityManager() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti");
-		if (entityManager == null) {
-			entityManager = factory.createEntityManager();
-		}
+    private IrantiDAO() {
+        entityManager = getEntityManager();
+    }
 
-		return entityManager;
-	}
+    private EntityManager getEntityManager() {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti-project");
+        if (entityManager == null) {
+            entityManager = factory.createEntityManager();
+        }
 
-	public Iranti getById(final int id) {
-		return entityManager.find(Iranti.class, id);
-	}
+        return entityManager;
+    }
 
-	@SuppressWarnings("unchecked")
-	public List<Iranti> findAll() {
-		return entityManager.createQuery("FROM " + Iranti.class.getName()).getResultList();
-	}
+    public Iranti getById(final int id) {
+        return entityManager.find(Iranti.class, id);
+    }
 
-	public void persist(Iranti iranti) {
-		try {
-			entityManager.getTransaction().begin();
-			entityManager.persist(iranti);
-			entityManager.getTransaction().commit();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			entityManager.getTransaction().rollback();
-		}
-	}
+    @SuppressWarnings("unchecked")
+    public List<Iranti> findAll() {
+        return entityManager.createQuery("FROM " + Iranti.class.getName()).getResultList();
+    }
 
-	public void merge(Iranti iranti) {
-		try {
-			entityManager.getTransaction().begin();
-			entityManager.merge(iranti);
-			entityManager.getTransaction().commit();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			entityManager.getTransaction().rollback();
-		}
-	}
+    public void persist(Iranti iranti) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(iranti);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+    }
 
-	public void remove(Iranti iranti) {
-		try {
-			entityManager.getTransaction().begin();
-			iranti = entityManager.find(Iranti.class, iranti.getId());
-			entityManager.remove(iranti);
-			entityManager.getTransaction().commit();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			entityManager.getTransaction().rollback();
-		}
-	}
+    public void merge(Iranti iranti) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(iranti);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+    }
 
-	public void removeById(final int id) {
-		try {
-			Iranti iranti = getById(id);
-			remove(iranti);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+    public void remove(Iranti iranti) {
+        try {
+            entityManager.getTransaction().begin();
+            iranti = entityManager.find(Iranti.class, iranti.getId());
+            entityManager.remove(iranti);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+    }
+
+    public void removeById(final int id) {
+        try {
+            Iranti iranti = getById(id);
+            remove(iranti);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

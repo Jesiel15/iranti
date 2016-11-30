@@ -1,10 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
     <h:body>
         <h2>Ranking</h2>
+        <ui:repeat var="item" value="#{rakingMb.List}"> 
+            <h1>#{item}</h1> 
+        </ui:repeat>
     </h:body>
 </html>
