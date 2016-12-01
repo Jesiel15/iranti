@@ -6,7 +6,15 @@
     version="2.2">
 	
     <application>
-        <message-bundle>iranti.properties.Message</message-bundle>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+            <supported-locale>en_US</supported-locale>
+            <supported-locale>pt_BR</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>iranti.properties.message</base-name>
+            <var>msg</var>
+        </resource-bundle>
     </application>
 	
 </faces-config>

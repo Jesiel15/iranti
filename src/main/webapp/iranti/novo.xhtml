@@ -18,29 +18,30 @@
     </h:head>
     <h:body>
         <ui:insert name="cabecalho">
-            <ui:include src="/resources/content/cabecalho.html" />
+            <ui:include src="/resources/content/cabecalho.xhtml" />
         </ui:insert>
-        <div align="center">
-            <h1>Iranti Project</h1>
+        <div>
+            <h1  align="center">Iranti Project</h1>
             <h:form>
                 <h:messages showDetail="false" showSummary="true" 
                             styleClass="form-messages" errorClass="error"
                             infoClass="info" />
                 <div class="form-group">
-                    <h:outputLabel value="Nome: " />
+                    <h:outputLabel value="#{msg.nome}:" />
                     <h:inputText required="true" value="#{irantiMB.iranti.nome}" />
                 </div>
                 <div class="form-group">
-                    <h:outputLabel value="Descricao: " />
+                    <h:outputLabel value="#{msg.descricao}:" />
                     <h:inputTextarea value="#{irantiMB.iranti.descricao}" />
                 </div>
+
                 <h:commandButton class="btn btn-success" value="Salvar Iranti"
-                                 action="#{irantiMB.salvarIranti()}" />
+                                 action="#{irantiMB.salvarIranti}" />
             </h:form>
             <h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
         </div>
         <ui:insert name="rodape">
-            <ui:include src="/resources/content/rodape.html" />
+            <ui:include src="/resources/content/rodape.xhtml" />
         </ui:insert>
 
     </h:body>

@@ -1,6 +1,7 @@
 package iranti.model.mb;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import iranti.entity.Iranti;
@@ -39,9 +40,19 @@ public class IrantiMB {
         return "play";
     }
     
-    public void salvarIranti() {
-        System.out.println(this.iranti);
-        IrantiDAO.getInstance().persist(this.iranti);
+    public String salvarIranti() {
+        iranti.setDataCriacao(new Date(System.currentTimeMillis()));
+        iranti.setUltimaModificacao(new Date(System.currentTimeMillis()));
+        if(IrantiDAO.getInstance().persist(this.iranti)) {
+            return "Cadastro efetuado com sucesso";
+        } else {
+            return "Cadastro deu ruim :/";
+        }
+
+    }
+
+    public void atualizarIranti() {
+
     }
 
     public Iranti getIranti() {

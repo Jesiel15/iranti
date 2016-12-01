@@ -18,24 +18,33 @@
 </h:head>
 <h:body>
 	<ui:insert name="cabecalho">
-		<ui:include src="/resources/content/cabecalho.html" />
+		<ui:include src="/resources/content/cabecalho.xhtml" />
 	</ui:insert>
-	<div align="center">
-		<h1>Iranti Project</h1>
+	<div>
+		<h1 align="center">#{msg.iranti}</h1>
 		<h:form>
-			<div class="iranti-btn">
-				<h:commandButton class="btn btn-primary" value="Criar Iranti"
-					action="#{irantiMB.criarIranti}" />
-				<h:commandButton class="btn btn-warning" value="Editar meu Iranti"
-					action="#{irantiMB.editarIranti}" />
-				<h:commandButton class="btn btn-success" value="Jogar Agora"
-					action="#{irantiMB.jogarAgora}" />
+			<h:messages showDetail="false" showSummary="true"
+						styleClass="form-messages" errorClass="error"
+						infoClass="info" />
+			<div class="form-group">
+				<h:outputLabel value="Nome: " />
+				<h:inputText required="true" value="#{irantiMB.iranti.nome}" />
 			</div>
+			<div class="form-group">
+				<h:outputLabel value="Descricao: " />
+				<h:inputTextarea value="#{irantiMB.iranti.descricao}" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="#{msg.dataModificado}:" />
+				<h:outputText value="#{irantiMB.iranti.ultimaModificacao}" />
+			</div>
+			<h:commandButton class="btn btn-success" value="#{msg.salvar}"
+							 action="#{irantiMB.salvarIranti()}" />
 		</h:form>
-		<h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
+		<h:graphicImage value="resources/pix/iranti.png" title="#{msg.iranti}"/>
 	</div>
 	<ui:insert name="rodape">
-		<ui:include src="/resources/content/rodape.html" />
+		<ui:include src="/resources/content/rodape.xhtml" />
 	</ui:insert>
 
 </h:body>

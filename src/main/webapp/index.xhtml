@@ -7,7 +7,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Iranti</title>
+        <title>#{msg.iranti}</title>
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -18,13 +18,13 @@
 </h:head>
 <h:body>
 	<ui:insert name="cabecalho">
-		<ui:include src="/resources/content/cabecalho.html" />
+		<ui:include src="/resources/content/cabecalho.xhtml" />
 	</ui:insert>
 	<div align="center">
 		<fieldset>
-			<legend>Iranti Project</legend>
+			<legend>#{msg.iranti}</legend>
 			<h:form>
-				<h:commandButton class="btn btn-success" value="Jogar Agora"
+				<h:commandButton class="btn btn-success" value="#{msg.jogar}"
 					action="#{irantiMB.jogarAgora}" />
 			</h:form>
 		</fieldset>
@@ -33,7 +33,7 @@
 		<ui:include src="/resources/content/ranking.xhtml" />
 	</ui:insert>
 	<ui:insert name="rodape">
-            <ui:include src="/resources/content/rodape.html" />
+            <ui:include src="/resources/content/rodape.xhtml" />
 	</ui:insert>
 
 </h:body>

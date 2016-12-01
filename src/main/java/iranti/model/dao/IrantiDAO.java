@@ -42,14 +42,16 @@ public class IrantiDAO {
         return entityManager.createQuery("FROM " + Iranti.class.getName()).getResultList();
     }
 
-    public void persist(Iranti iranti) {
+    public boolean persist(Iranti iranti) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(iranti);
             entityManager.getTransaction().commit();
+            return true;
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();
+            return false;
         }
     }
 

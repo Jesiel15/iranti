@@ -18,10 +18,10 @@
 </h:head>
 <h:body>
 	<ui:insert name="cabecalho">
-		<ui:include src="/resources/content/cabecalho.html" />
+		<ui:include src="/resources/content/cabecalho.xhtml" />
 	</ui:insert>
 	<div align="center">
-		<h1>Iranti Project</h1>
+		<h1>#{msg.iranti}</h1>
 		<h:form>
 			<div class="iranti-btn">
 				<h:commandButton class="btn btn-primary" value="Criar Iranti"
@@ -32,10 +32,10 @@
 					action="#{irantiMB.jogarAgora}" />
 			</div>
 		</h:form>
-		<h:graphicImage value="/resources/content/resources/pix/iranti.png" title="Iranti Project"/>
+		<h:graphicImage value="/resources/pix/iranti.png" title="Iranti Project"/>
 	</div>
 	<ui:insert name="rodape">
-		<ui:include src="/resources/content/rodape.html" />
+		<ui:include src="/resources/content/rodape.xhtml" />
 	</ui:insert>
 
 </h:body>
