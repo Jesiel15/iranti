@@ -7,7 +7,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Iranti</title>
+	<title>Iranti Jogo</title>
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -21,15 +21,13 @@
 		<ui:include src="/resources/content/cabecalho.xhtml" />
 	</ui:insert>
 	<div align="center">
-		<h1>Iranti Project</h1>
+		<h1>#{msg.iranti}</h1>
 		<h:form>
 			<div class="iranti-btn">
-				<h:commandButton class="btn btn-primary" value="Criar Iranti"
-					action="#{irantiMB.novoIranti}" />
-				<h:commandButton class="btn btn-warning" value="Editar meu Iranti"
-					action="#{irantiMB.editarIranti}" />
+				<h:commandButton class="btn btn-primary" value="Criar Jogo"
+					action="#{jogoMB.novoJogo}" />
 				<h:commandButton class="btn btn-success" value="Jogar Agora"
-					action="#{irantiMB.jogarAgora}" />
+					action="#{jogoMB.jogarAgora}" />
 			</div>
 		</h:form>
 		<h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>

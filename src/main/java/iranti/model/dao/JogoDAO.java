@@ -7,20 +7,20 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import iranti.entity.Iranti;
 
-public class IrantiDAO {
+public class JogoDAO {
 
-    private static IrantiDAO instance;
+    private static JogoDAO instance;
     protected EntityManager entityManager;
 
-    public static IrantiDAO getInstance() {
+    public static JogoDAO getInstance() {
         if (instance == null) {
-            instance = new IrantiDAO();
+            instance = new JogoDAO();
         }
 
         return instance;
     }
 
-    private IrantiDAO() {
+    private JogoDAO() {
         entityManager = getEntityManager();
     }
 

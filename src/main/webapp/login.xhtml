@@ -17,29 +17,29 @@
 	<h:outputScript library="js" name="jquery-3.1.1.min.js" />
 	<h:outputScript library="js" name="bootstrap.min.js" />
 </h:head>
-<h:body>
-	<ui:insert name="cabecalho">
-		<ui:include src="/resources/content/cabecalho.html" />
-	</ui:insert>
-	<h:form>
-		<p:messages id="messages" />
-		<p:panelGrid columns="2">
-			<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
-			<p:inputText id="nomeUsuario" required="true"
-				value="#{LoginMB.usuario.nomeUsuario}" />
+<!--<h:body>-->
+	<!--<ui:insert name="cabecalho">-->
+		<!--<ui:include src="/resources/content/cabecalho.xhtml" />-->
+	<!--</ui:insert>-->
+	<!--<h:form>-->
+		<!--<p:messages id="messages" />-->
+		<!--<p:panelGrid columns="2">-->
+			<!--<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />-->
+			<!--<p:inputText id="nomeUsuario" required="true"-->
+				<!--value="#{LoginMB.usuario.nomeUsuario}" />-->
 
-			<p:outputLabel for="senha" value="Senha:" />
-			<p:password id="senha" required="true"
-				value="#{LoginMB.usuario.senha}" />
+			<!--<p:outputLabel for="senha" value="Senha:" />-->
+			<!--<p:password id="senha" required="true"-->
+				<!--value="#{LoginMB.usuario.senha}" />-->
 
-			<p:commandButton value="Enviar" icon="ui-icon-star"
-				action="#{loginMB.Enviar}" ajax="false">
-			</p:commandButton>
+			<!--<p:commandButton value="Enviar" icon="ui-icon-star"-->
+				<!--action="#{loginMB.Enviar}" ajax="false">-->
+			<!--</p:commandButton>-->
 
-		</p:panelGrid>
-	</h:form>
-	<ui:insert name="rodape">
-            <ui:include src="/resources/content/rodape.html" />
-	</ui:insert>
-</h:body>
+		<!--</p:panelGrid>-->
+	<!--</h:form>-->
+	<!--<ui:insert name="rodape">-->
+            <!--<ui:include src="/resources/content/rodape.xhtml" />-->
+	<!--</ui:insert>-->
+<!--</h:body>-->
 </html>
