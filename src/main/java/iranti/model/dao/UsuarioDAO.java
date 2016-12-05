@@ -34,9 +34,10 @@ public class UsuarioDAO {
 	}
 
 	public Usuario getUsuario(String nomeUsuario, String senha) {
-
+		 EntityManagerFactory f = Persistence.createEntityManagerFactory("iranti");
+		    EntityManager em = f.createEntityManager();
 		try {
-			Usuario usuario = (Usuario) getEntityManager()
+			Usuario usuario = (Usuario) em
 					.createQuery("SELECT u from Usuario u where u.nomeUsuario = :name and u.senha = :senha")
 					.setParameter("name", nomeUsuario).setParameter("senha", senha).getSingleResult();
 

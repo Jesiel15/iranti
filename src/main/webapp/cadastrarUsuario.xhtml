@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login</title>
+	<title>Cadastrar Usuario</title>
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -24,26 +24,46 @@
 	<h:form>
 		<p:messages id="messages" />
 		<p:panelGrid columns="2">
-			<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
-			<p:inputText id="nomeUsuario" required="true"
+
+			<p:outputLabel for="nome" value="Nome:" />
+			<p:inputText id="nome" required="true" size="30"
+				value="#{LoginMB.usuario.nome}" />
+
+			<p:outputLabel for="apelido" value="Apelido:" />
+			<p:inputText id="apelido" required="true" size="20"
 				value="#{LoginMB.usuario.nomeUsuario}" />
 
 			<p:outputLabel for="senha" value="Senha:" />
 			<p:password id="senha" required="true"
 				value="#{LoginMB.usuario.senha}" />
 
-			<p:commandButton value="Enviar"  icon="ui-icon-star"
-				action="#{LoginMB.Enviar}" ajax="false" >
+			<p:outputLabel for="email" value="Email:" />
+			<p:inputText id="email" required="true" size="30"
+				value="#{LoginMB.usuario.email}" />
+
+
+
+			<p:commandButton value="Voltar" icon="ui-icon-star"
+				action="login.jsf" ajax="false" immediate="true" >
 			</p:commandButton>
 			
-			<p:commandButton value="Cadastra-se"  icon="ui-icon-star"
-				action="cadastrarUsuario.jsf" ajax="false" immediate="true" >
+			<p:commandButton value="Cadastrar" icon="ui-icon-star"
+				action="#{UsuarioMB.cadastraUsuario}" update="messages">
 			</p:commandButton>
-	
+
+			
+
 		</p:panelGrid>
 	</h:form>
+	
 	<ui:insert name="rodape">
 		<ui:include src="/rodape.html" />
 	</ui:insert>
 </h:body>
 </html>
+
+
+
+
+
+

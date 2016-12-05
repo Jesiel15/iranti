@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
 	@Column(name = "Senha", nullable = false, unique = false)
 	private String senha;
 
-	@Column(name = "Nome", nullable = false)
+	@Column(name = "Nome", nullable = false, unique = true)
 	private String nome;
 
 	@Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
@@ -50,6 +50,18 @@ public class Usuario implements Serializable {
 
 	public String getSenha() {
 		return senha;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setSenha(String senha) {
