@@ -8,6 +8,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>#{msg.iranti}</title>
+	<link rel="icon" type="image/png" href="/resources/pix/iranti-black.jpg" />
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -28,6 +29,9 @@
 					action="#{irantiMB.jogarAgora}" />
 			</h:form>
 		</fieldset>
+	</div>
+	<div align="center">
+		<h:graphicImage value="/resources/pix/iranti-black.jpg" width="350" title="Iranti Project"/>
 	</div>
 	<ui:insert name="ranking">
 		<ui:include src="/resources/content/ranking.xhtml" />

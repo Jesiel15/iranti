@@ -31,3 +31,4 @@ src/main/java/META-INF/persistence.xml
 # Maven
 log/
 target/
+/bin/
