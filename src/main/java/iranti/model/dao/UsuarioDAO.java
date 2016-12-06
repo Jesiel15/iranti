@@ -1,10 +1,11 @@
 package iranti.model.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-
 import iranti.entity.Usuario;
 
 public class UsuarioDAO {
@@ -25,7 +26,7 @@ public class UsuarioDAO {
 	}
 
 	private EntityManager getEntityManager() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti-project");
 		if (entityManager == null) {
 			entityManager = factory.createEntityManager();
 		}
@@ -45,23 +46,52 @@ public class UsuarioDAO {
 			return null;
 		}
 	}
+	
+	public Usuario getById(final int id) {
+		return entityManager.find(Usuario.class, id);
+	}
 
-	public boolean inserirUsuario(Usuario usuario) {
+	@SuppressWarnings("unchecked")
+	public List<Usuario> findAll() {
+		return entityManager.createQuery("FROM " + Usuario.class.getName()).getResultList();
+	}
+
+	public boolean persist(Usuario usuario) {
 		try {
-			getEntityManager().persist(usuario);
+			entityManager.getTransaction().begin();
+			entityManager.persist(usuario);
+			entityManager.getTransaction().commit();
 			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			entityManager.getTransaction().rollback();
 			return false;
 		}
 	}
 
-	public boolean deletarUsuario(Usuario usuario) {
+	public boolean merge(Usuario usuario) {
 		try {
-			getEntityManager().remove(usuario);
+			entityManager.getTransaction().begin();
+			entityManager.merge(usuario);
+			entityManager.getTransaction().commit();
 			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			entityManager.getTransaction().rollback();
+			return false;
+		}
+	}
+
+	public boolean remove(Usuario usuario) {
+		try {
+			entityManager.getTransaction().begin();
+			usuario = entityManager.find(Usuario.class, usuario.getId());
+			entityManager.remove(usuario);
+			entityManager.getTransaction().commit();
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			entityManager.getTransaction().rollback();
 			return false;
 		}
 	}

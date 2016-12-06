@@ -14,3 +14,21 @@ hs_err_pid*
 
 #conexao
 src/main/java/META-INF/persistence.xml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+/bin/

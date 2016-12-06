@@ -5,8 +5,16 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	
-	<application>
-		<message-bundle>iranti.properties.Message</message-bundle>
-	</application>
+    <application>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+            <supported-locale>en_US</supported-locale>
+            <supported-locale>pt_BR</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>iranti.properties.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
 	
 </faces-config>

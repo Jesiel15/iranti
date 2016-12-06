@@ -4,22 +4,22 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import iranti.entity.Iranti;
+import iranti.entity.Jogo;
 
-public class IrantiDAO {
+public class JogoDAO {
 
-	private static IrantiDAO instance;
+	private static JogoDAO instance;
 	protected EntityManager entityManager;
 
-	public static IrantiDAO getInstance() {
+	public static JogoDAO getInstance() {
 		if (instance == null) {
-			instance = new IrantiDAO();
+			instance = new JogoDAO();
 		}
 
 		return instance;
 	}
 
-	private IrantiDAO() {
+	private JogoDAO() {
 		entityManager = getEntityManager();
 	}
 
@@ -30,19 +30,19 @@ public class IrantiDAO {
 		return entityManager;
 	}
 
-	public Iranti getById(final int id) {
-		return entityManager.find(Iranti.class, id);
+	public Jogo getById(final int id) {
+		return entityManager.find(Jogo.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Iranti> findAll() {
-		return entityManager.createQuery("FROM " + Iranti.class.getName()).getResultList();
+	public List<Jogo> findAll() {
+		return entityManager.createQuery("FROM " + Jogo.class.getName()).getResultList();
 	}
 
-	public boolean persist(Iranti iranti) {
+	public boolean persist(Jogo jogo) {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.persist(iranti);
+			entityManager.persist(jogo);
 			entityManager.getTransaction().commit();
 			return true;
 		} catch (Exception ex) {
@@ -52,37 +52,33 @@ public class IrantiDAO {
 		}
 	}
 
-	public boolean merge(Iranti iranti) {
+	public void merge(Jogo jogo) {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.merge(iranti);
+			entityManager.merge(jogo);
 			entityManager.getTransaction().commit();
-            return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
-            return false;
 		}
 	}
 
-	public boolean remove(Iranti iranti) {
+	public void remove(Jogo jogo) {
 		try {
 			entityManager.getTransaction().begin();
-			iranti = entityManager.find(Iranti.class, iranti.getId());
-			entityManager.remove(iranti);
+			jogo = entityManager.find(Jogo.class, jogo.getId());
+			entityManager.remove(jogo);
 			entityManager.getTransaction().commit();
-			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
-			return false;
 		}
 	}
 
 	public void removeById(final int id) {
 		try {
-			Iranti iranti = getById(id);
-			remove(iranti);
+			Jogo jogo = getById(id);
+			remove(jogo);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

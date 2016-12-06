@@ -4,85 +4,80 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import iranti.entity.Iranti;
+import iranti.entity.Ranking;
 
-public class IrantiDAO {
-
-	private static IrantiDAO instance;
+public class RankingDAO {
+	private static RankingDAO instance;
 	protected EntityManager entityManager;
 
-	public static IrantiDAO getInstance() {
+	public static RankingDAO getInstance() {
 		if (instance == null) {
-			instance = new IrantiDAO();
+			instance = new RankingDAO();
 		}
 
 		return instance;
 	}
 
-	private IrantiDAO() {
+	private RankingDAO() {
 		entityManager = getEntityManager();
 	}
 
 	private EntityManager getEntityManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti-project");
-		entityManager = factory.createEntityManager();
+		if (entityManager == null) {
+			entityManager = factory.createEntityManager();
+		}
 
 		return entityManager;
 	}
 
-	public Iranti getById(final int id) {
-		return entityManager.find(Iranti.class, id);
+	public Ranking getById(final int id) {
+		return entityManager.find(Ranking.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Iranti> findAll() {
-		return entityManager.createQuery("FROM " + Iranti.class.getName()).getResultList();
+	public List<Ranking> findAll() {
+		return entityManager.createQuery("FROM " + Ranking.class.getName()).getResultList();
 	}
 
-	public boolean persist(Iranti iranti) {
+	public void persist(Ranking ranking) {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.persist(iranti);
+			entityManager.persist(ranking);
 			entityManager.getTransaction().commit();
-			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
-			return false;
 		}
 	}
 
-	public boolean merge(Iranti iranti) {
+	public void merge(Ranking ranking) {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.merge(iranti);
+			entityManager.merge(ranking);
 			entityManager.getTransaction().commit();
-            return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
-            return false;
 		}
 	}
 
-	public boolean remove(Iranti iranti) {
+	public void remove(Ranking ranking) {
 		try {
 			entityManager.getTransaction().begin();
-			iranti = entityManager.find(Iranti.class, iranti.getId());
-			entityManager.remove(iranti);
+			ranking = entityManager.find(Ranking.class, ranking.getId());
+			entityManager.remove(ranking);
 			entityManager.getTransaction().commit();
-			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
-			return false;
 		}
 	}
 
 	public void removeById(final int id) {
 		try {
-			Iranti iranti = getById(id);
-			remove(iranti);
+			Ranking ranking = getById(id);
+			remove(ranking);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

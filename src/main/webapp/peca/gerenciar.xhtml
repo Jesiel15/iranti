@@ -4,11 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Iranti</title>
+	<title>Iranti Pecas</title>
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -21,26 +20,19 @@
 	<ui:insert name="cabecalho">
 		<ui:include src="/resources/content/cabecalho.xhtml" />
 	</ui:insert>
-	<div>
-		<h1 align="center">#{msg.iranti}</h1>
+	<div align="center">
+		<h1>#{msg.iranti}</h1>
 		<h:form>
-			<p:messages id="messages" />
-			<div class="form-group">
-				<h:outputLabel value="Nome: " />
-				<h:inputText required="true" value="#{irantiMB.iranti.nome}" />
+			<div class="iranti-btn">
+				<h:commandButton class="btn btn-primary" value="Criar Iranti"
+					action="#{irantiMB.novoIranti}" />
+				<h:commandButton class="btn btn-warning" value="Editar meu Iranti"
+					action="#{irantiMB.editarIranti}" />
+				<h:commandButton class="btn btn-success" value="Jogar Agora"
+					action="#{irantiMB.jogarAgora}" />
 			</div>
-			<div class="form-group">
-				<h:outputLabel value="Descricao: " />
-				<h:inputTextarea value="#{irantiMB.iranti.descricao}" />
-			</div>
-			<div class="form-group">
-				<h:outputLabel value="#{msg.dataModificado}:" />
-				<h:outputText value="#{irantiMB.iranti.ultimaModificacao}" />
-			</div>
-			<h:commandButton class="btn btn-success" value="#{msg.salvar}"
-							 action="#{irantiMB.salvarIranti}" />
 		</h:form>
-		<h:graphicImage value="resources/pix/iranti.png" title="#{msg.iranti}"/>
+		<h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
 	</div>
 	<ui:insert name="rodape">
 		<ui:include src="/resources/content/rodape.xhtml" />
