@@ -24,7 +24,7 @@ public class IrantiDAO {
 	}
 
 	private EntityManager getEntityManager() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti-project");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti");
 		entityManager = factory.createEntityManager();
 
 		return entityManager;

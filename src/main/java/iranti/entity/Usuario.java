@@ -85,6 +85,14 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Papel getPapel() {
         return papel;
     }

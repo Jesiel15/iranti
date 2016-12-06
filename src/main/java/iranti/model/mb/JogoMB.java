@@ -23,117 +23,146 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class JogoMB {
 
-	private Jogo jogo;
-	private Iranti iranti;
-	private IrantiDAO irantiDAO;
-	private JogoDAO jogoDAO;
-	private UsuarioDAO dono;
-	private List<Jogo> jogos = new ArrayList<Jogo>();
-	private List<Iranti> irantis = new ArrayList<Iranti>();
-	private List<Peca> pecas = new ArrayList<Peca>();
-	private List<Usuario> jogadores = new ArrayList<Usuario>();
+    private Jogo jogo;
+    private Iranti iranti;
+    private IrantiDAO irantiDAO;
+    private JogoDAO jogoDAO;
+    private UsuarioDAO dono;
+    private List<Jogo> jogos = new ArrayList<Jogo>();
+    private List<Iranti> irantis = new ArrayList<Iranti>();
+    private List<Peca> pecas = new ArrayList<Peca>();
+    private List<Usuario> jogadores = new ArrayList<Usuario>();
 
 
-	public JogoMB() {
-		super();
-		this.jogo = new Jogo();
-	}
+    public JogoMB() {
 
-	public String novoJogo() {
-		this.irantis = irantiDAO.getInstance().findAll();
-		if (this.irantis.size() > 0 ) {
-			return "novo";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eh necessario cadastrar um Iranti primeiro ;)", "Erro no Jogo!"));
-			return null;
-		}
-	}
+    }
 
-	public Dificuldade[] getDificuldade() {
-		return Dificuldade.values();
-	}
+    /*** Navegacao ***/
+    public String editarJogo() {
+        return "editar";
+    }
 
-	public Status[] getStatuses() {return Status.values(); }
+    public String voltarJogo() {
+        return "index";
+    }
 
-	public String editarJogo() {
-		return "editar";
-	}
+    public String novoJogo() {
+        this.irantis = irantiDAO.getInstance().findAll();
+        if (this.irantis.size() > 0) {
+            return "novo";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eh necessario cadastrar um Iranti primeiro ;)", "Erro no Jogo!"));
+            return null;
+        }
+    }
 
-	public String jogarAgora() {
-		this.jogos = jogoDAO.getInstance().findAll();
-		if (this.jogos.size() > 0 ) {
-			return "/jogo/play";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eh necessario cadastrar um jogo primeiro ;)", "Erro no Jogo!"));
-			return null;
-		}
-	}
+    public String jogarAgora() {
+        listarJogos();
+        if (this.jogos.size() > 0) {
+            return "/jogo/play";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eh necessario cadastrar um jogo primeiro ;)", "Erro no Jogo!"));
+            return null;
+        }
+    }
+    /*** Navegacao ***/
 
-	public String jogar() {
-		JogoSv service = new JogoSv();
-		jogo = service.montarJogo(iranti.getId());
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eh necessario cadastrar um jogo primeiro ;)", "Erro no Jogo!"));
-		return null;
-	}
+    /*** Create***/
+    public String salvarJogo() {
+        if (JogoDAO.getInstance().persist(jogo)) {
+            return jogarAgora();
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar o jogo, tente novamente ;)", "Erro no Jogo!"));
+            return null;
+        }
+    }
 
-	public String salvarJogo() {
-		if(JogoDAO.getInstance().persist(jogo)) {
-			return jogarAgora();
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar o jogo, tente novamente ;)", "Erro no Jogo!"));
-			return null;
-		}
-	}
+    /*** Read ***/
+    public void listarJogos() {
+        this.jogos = JogoDAO.getInstance().findAll();
+    }
 
-	public String voltarJogo() {
-		return "index";
-	}
+    public List<Jogo> listarJogos(String filtro) {
+        this.jogos = JogoDAO.getInstance().getByName(filtro);
+        return this.jogos;
+    }
 
-	public void atualizarJogo() {
+    public String jogar(Jogo jogo) {
+        JogoSv service = new JogoSv();
+        jogo = service.montarJogo(iranti.getId());
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eh necessario cadastrar um jogo primeiro ;)", "Erro no Jogo!"));
+        return null;
+    }
 
-	}
+    /*** Delete ***/
+    public String excluirJogo(Jogo jogo) {
+        if (JogoDAO.getInstance().remove(jogo)) {
+            return jogarAgora();
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao excluir o jogo, tente novamente ;)", "Erro no Jogo!"));
+            return null;
+        }
+    }
 
-	public Jogo getJogo() {
-		return jogo;
-	}
 
-	public void setJogo(Jogo jogo) {
-		this.jogo = jogo;
-	}
+    public void atualizarJogo(Peca peca) {
 
-	public List<Iranti> getIrantis() {
-		return irantis;
-	}
+    }
 
-	public void setIrantis(List<Iranti> irantis) {
-		this.irantis = irantis;
-	}
+    /*** getters and setters ***/
+    public Jogo getJogo() {
+        return jogo;
+    }
 
-	public List<Usuario> getJogadores() {
-		return jogadores;
-	}
+    public void setJogo(Jogo jogo) {
+        this.jogo = jogo;
+    }
 
-	public void setJogadores(List<Usuario> jogadores) {
-		this.jogadores = jogadores;
-	}
+    public List<Iranti> getIrantis() {
+        return irantis;
+    }
 
-	public List<Jogo> getJogos() {
-		return jogos;
-	}
+    public void setIrantis(List<Iranti> irantis) {
+        this.irantis = irantis;
+    }
 
-	public void setJogos(List<Jogo> jogos) {
-		this.jogos = jogos;
-	}
+    public List<Usuario> getJogadores() {
+        return jogadores;
+    }
 
-	public List<Peca> getPecas() {
-		return pecas;
-	}
+    public void setJogadores(List<Usuario> jogadores) {
+        this.jogadores = jogadores;
+    }
 
-	public void setPecas(List<Peca> pecas) {
-		this.pecas = pecas;
-	}
+    public List<Jogo> getJogos() {
+        return jogos;
+    }
+
+    public void setJogos(List<Jogo> jogos) {
+        this.jogos = jogos;
+    }
+
+    public List<Peca> getPecas() {
+        return pecas;
+    }
+
+    public void setPecas(List<Peca> pecas) {
+        this.pecas = pecas;
+    }
+
+    /*** enums ***/
+    public Dificuldade[] getDificuldade() {
+        return Dificuldade.values();
+    }
+
+    public Status[] getStatuses() {
+        return Status.values();
+    }
+
 }
