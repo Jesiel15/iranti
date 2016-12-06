@@ -52,26 +52,30 @@ public class IrantiDAO {
 		}
 	}
 
-	public void merge(Iranti iranti) {
+	public boolean merge(Iranti iranti) {
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.merge(iranti);
 			entityManager.getTransaction().commit();
+            return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
+            return false;
 		}
 	}
 
-	public void remove(Iranti iranti) {
+	public boolean remove(Iranti iranti) {
 		try {
 			entityManager.getTransaction().begin();
 			iranti = entityManager.find(Iranti.class, iranti.getId());
 			entityManager.remove(iranti);
 			entityManager.getTransaction().commit();
+			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
+			return false;
 		}
 	}
 

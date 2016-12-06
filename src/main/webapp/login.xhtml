@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Login</title>
-	<link rel="icon" type="image/png" href="/resources/pix/iranti-black.jpg" />
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -27,21 +26,27 @@
 		<p:panelGrid columns="2">
 			<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
 			<p:inputText id="nomeUsuario" required="true"
-				value="#{LoginMB.usuario.nomeUsuario}" />
+						 value="#{usuarioMB.usuario.nomeUsuario}" />
 
 			<p:outputLabel for="senha" value="Senha:" />
 			<p:password id="senha" required="true"
-				value="#{LoginMB.usuario.senha}" />
+						value="#{usuarioMB.usuario.senha}" />
 
-			<p:commandButton value="Enviar" icon="ui-icon-star"
-				action="#{loginMB.Enviar}" ajax="false">
+			<p:commandButton value="Enviar"  icon="ui-icon-star"
+							 action="#{usuarioMB.Enviar}" ajax="false" >
+			</p:commandButton>
+
+			<p:commandButton value="Cadastra-se"  icon="ui-icon-star"
+							 action="cadastrarUsuario.jsf" ajax="false" immediate="true" >
 			</p:commandButton>
 
 		</p:panelGrid>
 	</h:form>
-	<h:graphicImage value="/resources/pix/iranti-black.jpg" width="350" title="Iranti Project"/>
+	<div align="center">
+		<h:graphicImage value="/resources/pix/iranti-black.jpg" width="350" title="Iranti Project"/>
+	</div>
 	<ui:insert name="rodape">
-            <ui:include src="/resources/content/rodape.xhtml" />
+		<ui:include src="/resources/content/rodape.xhtml" />
 	</ui:insert>
 </h:body>
 </html>

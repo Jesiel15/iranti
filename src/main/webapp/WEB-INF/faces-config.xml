@@ -12,7 +12,7 @@
             <supported-locale>pt_BR</supported-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>iranti.properties.message</base-name>
+            <base-name>iranti.properties.messages</base-name>
             <var>msg</var>
         </resource-bundle>
     </application>

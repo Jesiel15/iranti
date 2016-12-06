@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <body>
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -18,7 +18,7 @@
 					class="icon-bar"></span>
 			</button>
 
-			<a class="navbar-brand" href="#"> <h:graphicImage
+			<a class="navbar-brand" href="/"> <h:graphicImage
 					value="/resources/pix/logo.png" alt="Iranti Project"
 					style="width: 40px; margin-top: -10px;" />
 			</a>
@@ -38,6 +38,7 @@
 				<li><a href="/iranti.jsf"></a></li>
 				<li><a href="/sobre.jsf">#{msg.sobre}</a></li>
 				<li><a href="/login.jsf">#{msg.login}</a></li>
+				<li><a href="/user/index.jsf">#{msg.user}</a></li> <!--only for admin users-->
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

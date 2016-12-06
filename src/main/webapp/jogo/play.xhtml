@@ -34,12 +34,11 @@
         <h:form>
             <ui:repeat value="#{jogoMB.pecas}" var="item">
                 <div class="item-iranti">
-                    <h:commandButton value="#{jogoMB.pecas.id}">
+                    <h:commandButton value="#{jogoMB.pecas.id}" action="#{jogoMB.atualizarJogo}">
                         <h:graphicImage value="#{jogoMB.peca.local}" width="350"
                                     title="Iranti Project" />
                     </h:commandButton>
                 </div>
-
             </ui:repeat>
         </h:form>
 

@@ -69,26 +69,30 @@ public class UsuarioDAO {
 		}
 	}
 
-	public void merge(Usuario usuario) {
+	public boolean merge(Usuario usuario) {
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.merge(usuario);
 			entityManager.getTransaction().commit();
+			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
+			return false;
 		}
 	}
 
-	public void remove(Usuario usuario) {
+	public boolean remove(Usuario usuario) {
 		try {
 			entityManager.getTransaction().begin();
 			usuario = entityManager.find(Usuario.class, usuario.getId());
 			entityManager.remove(usuario);
 			entityManager.getTransaction().commit();
+			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
+			return false;
 		}
 	}
 

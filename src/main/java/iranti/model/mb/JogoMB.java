@@ -40,13 +40,7 @@ public class JogoMB {
 	}
 
 	public String novoJogo() {
-		//this.irantis = irantiDAO.findAll();
-		Iranti iranti = new Iranti("Teste 1", "Teste1 descricao");
-		this.irantis.add(iranti);
-		iranti = new Iranti("Teste 2", "Teste2 descricao");
-		this.irantis.add(iranti);
-		iranti = new Iranti("Teste 3", "Teste3 descricao");
-		this.irantis.add(iranti);
+		this.irantis = irantiDAO.getInstance().findAll();
 		if (this.irantis.size() > 0 ) {
 			return "novo";
 		} else {
@@ -67,11 +61,7 @@ public class JogoMB {
 	}
 
 	public String jogarAgora() {
-		//this.jogos = jogoDAO.findAll();
-		Jogo jogo = new Jogo();
-		this.jogos.add(jogo);
-		jogo = new Jogo(Status.Andamento, Dificuldade.Medio, this.jogadores, irantiDAO.getInstance().getById(2), dono.getInstance().getById(1));
-		this.jogos.add(jogo);
+		this.jogos = jogoDAO.getInstance().findAll();
 		if (this.jogos.size() > 0 ) {
 			return "/jogo/play";
 		} else {
@@ -90,11 +80,17 @@ public class JogoMB {
 	}
 
 	public String salvarJogo() {
-		if(jogoDAO.getInstance().persist(jogo)) {
+		if(JogoDAO.getInstance().persist(jogo)) {
 			return jogarAgora();
 		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar o jogo, tente novamente ;)", "Erro no Jogo!"));
 			return null;
 		}
+	}
+
+	public String voltarJogo() {
+		return "index";
 	}
 
 	public void atualizarJogo() {

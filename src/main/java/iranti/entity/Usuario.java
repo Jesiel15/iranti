@@ -1,5 +1,7 @@
 package iranti.entity;
 
+import iranti.entity.enums.Papel;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -9,7 +11,6 @@ import javax.persistence.*;
  * @rel: 1 Usuario joga nenhum ou varios Jogos
  * @rel: 1 Usuario cria nenhum ou varios Irantis: Administrador
  * @rel: 1 Usuario possui nenhum ou varios rankings
- *
  */
 
 @Entity
@@ -17,67 +18,78 @@ import javax.persistence.*;
 @Table(name = "USUARIO")
 public class Usuario implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQUENCE")
-	@Column(name = "User_Id", nullable = false)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQUENCE")
+    @Column(name = "User_Id", nullable = false)
+    private Integer id;
 
-	@Column(name = "Username", nullable = false, unique = true)
-	private String nomeUsuario;
+    @Column(name = "Username", nullable = false, unique = true)
+    private String nomeUsuario;
 
-	@Column(name = "Senha", nullable = false, unique = false)
-	private String senha;
+    @Column(name = "Senha", nullable = false, unique = false)
+    private String senha;
 
-	@Column(name = "Nome", nullable = false)
-	private String nome;
+    @Column(name = "Nome", nullable = false)
+    private String nome;
 
-	@Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
-	@Column(name = "Last_Access")
-	private Date ultimoAcesso;
+    @Temporal(value = TemporalType.TIMESTAMP) // TIMESTAMP: Data e Hora
+    @Column(name = "Last_Access")
+    private Date ultimoAcesso;
 
-	@Column(name = "Email")
-	private String email;
+    @Column(name = "Email")
+    private String email;
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Papel", nullable = false)
+    private Papel papel;
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public Date getUltimoAcesso() {
-		return ultimoAcesso;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public void setUltimoAcesso(Date ultimoAcesso) {
-		this.ultimoAcesso = ultimoAcesso;
-	}
+    public Date getUltimoAcesso() {
+        return ultimoAcesso;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setUltimoAcesso(Date ultimoAcesso) {
+        this.ultimoAcesso = ultimoAcesso;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Papel getPapel() {
+        return papel;
+    }
+
+    public void setPapel(Papel papel) {
+        this.papel = papel;
+    }
 }

@@ -7,7 +7,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Iranti</title>
+	<title>Iranti Ranking</title>
+	<link rel="icon" type="image/png" href="/resources/pix/iranti-black.jpg" />
 	<h:outputStylesheet library="style" name="normalize.css" />
 	<h:outputStylesheet library="style" name="iranti.css" />
 	<h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -21,22 +22,14 @@
 		<ui:include src="/resources/content/cabecalho.xhtml" />
 	</ui:insert>
 	<div align="center">
-		<h1>Iranti Project</h1>
-		<h:form>
-			<div class="iranti-btn">
-				<h:commandButton class="btn btn-primary" value="Criar Iranti"
-					action="#{irantiMB.novoIranti}" />
-				<h:commandButton class="btn btn-warning" value="Editar meu Iranti"
-					action="#{irantiMB.editarIranti}" />
-				<h:commandButton class="btn btn-success" value="Jogar Agora"
-					action="#{irantiMB.jogarAgora}" />
-			</div>
-		</h:form>
-		<h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
+		<h1>#{msg.iranti}</h1>
+		<ui:insert name="rodape">
+			<ui:include src="/resources/content/ranking.xhtml" />
+		</ui:insert>
+		<h:graphicImage value="/resources/pix/iranti.jpg" width="350" title="Iranti Project"/>
 	</div>
 	<ui:insert name="rodape">
 		<ui:include src="/resources/content/rodape.xhtml" />
 	</ui:insert>
-
 </h:body>
 </html>
