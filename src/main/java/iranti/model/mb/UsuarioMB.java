@@ -21,6 +21,10 @@ public class UsuarioMB {
     private UsuarioDAO userDAO;
     private Papel papeis;
 
+    public String cadastro() {
+        return "/user/novo";
+    }
+
     public String novoUsuario() {
         if (userDAO.getInstance().persist(usuario)) {
             FacesContext.getCurrentInstance().addMessage(
@@ -87,5 +91,18 @@ public class UsuarioMB {
 
     public Papel[] getPapeis() {
         return Papel.values();
+    }
+
+    public String listarUsuarios() {
+        return "users";
+    }
+
+    public String criarUsuario() {
+//        if(isAdmin())
+        return "novo";
+    }
+
+    public String editar() {
+        return "editar";
     }
 }

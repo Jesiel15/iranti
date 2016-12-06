@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Irantis</title>
+    <title>Jogos</title>
     <h:outputStylesheet library="style" name="normalize.css"/>
     <h:outputStylesheet library="style" name="iranti.css"/>
     <h:outputStylesheet library="style" name="bootstrap.min.css"/>
@@ -23,35 +23,37 @@
     </ui:insert>
     <div align="center">
         <h1>#{msg.iranti}</h1>
+        <h:inputText value="#{jogoMB.jogos.nome}" />
+        <h:commandButton value="Pesquisar" action="#{jogoMB.listarJogos(this)}" />
         <h:messages class="alert alert-danger" showSummary="false" showDetail="true" align="center"/>
-        <h:dataTable value="#{irantiMB.irantis}" var="i"
+        <h:dataTable value="#{jogoMB.jogos}" var="j"
                      styleClass="order-table"
                      headerClass="order-table-header"
                      rowClasses="order-table-odd-row,order-table-even-row"
                      class="table">
             <h:column>
-                <f:facet name="header">#{msg.idIranti}</f:facet>
-                #{i.id}
+                <f:facet name="header">#{msg.idJogo}</f:facet>
+                #{j.id}
             </h:column>
             <h:column>
                 <f:facet name="header">#{msg.nome}</f:facet>
-                #{i.nome}
+                #{j.iranti.nome}
             </h:column>
             <h:column>
-                <f:facet name="header">#{msg.descricao}</f:facet>
-                #{i.descricao}
+                <f:facet name="header">#{msg.criadoPor}</f:facet>
+                #{j.criador}
             </h:column>
             <h:column>
-                <f:facet name="header">#{msg.dataCriacao}</f:facet>
-                #{i.dataCriacao}
+                <f:facet name="header">#{msg.status}</f:facet>
+                #{j.status}
             </h:column>
             <h:column>
                 <f:facet name="header">#{msg.acao}</f:facet>
                 <h:form>
-                    <h:commandLink class="glyphicon glyphicon-cog" title="#{msg.editar}"
-                                   action="#{irantiMB.editarIranti(i)}"/>
+                    <h:commandLink class="glyphicon glyphicon-play" title="#{msg.editar}"
+                                   action="#{jogoMB.jogar(j)}"/>
                     <h:commandLink class="glyphicon glyphicon-trash" title="#{msg.excluir}"
-                                   action="#{irantiMB.excluirIranti(i)}"/>
+                                   action="#{jogoMB.excluirJogo(j)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>

@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Iranti</title>
+        <title>#{msg.iranti}</title>
         <h:outputStylesheet library="style" name="normalize.css" />
         <h:outputStylesheet library="style" name="iranti.css" />
         <h:outputStylesheet library="style" name="bootstrap.min.css" />
@@ -23,11 +23,12 @@
         </ui:insert>
         <div>
             <h1 align="center">msg.iranti</h1>
+            <h:messages class="alert alert-danger" showSummary="false" showDetail="true" align="center"/>
             <h:form>
-                <p:messages id="messages" />
                 <div class="form-group">
                     <h:outputLabel value="#{msg.nome}:" />
-                    <h:inputText required="true" value="#{irantiMB.iranti.nome}" />
+                    <h:inputText required="true" requiredMessage="Informe um nome"
+                                 value="#{irantiMB.iranti.nome}" />
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="#{msg.descricao}:" />
@@ -35,10 +36,10 @@
                 </div>
                 <h:commandButton class="btn btn-danger" value="#{msg.cancelar}"
                                  action="#{irantiMB.voltarIranti}" />
-                <h:commandButton class="btn btn-success" value="Salvar Iranti"
+                <h:commandButton class="btn btn-success" value="#{msg.salvar}"
                                  action="#{irantiMB.salvarIranti}" />
             </h:form>
-            <h:graphicImage value="resources/pix/iranti.png" title="Iranti Project"/>
+            <h:graphicImage value="/resources/pix/iranti.png" title="#{msg.iranti}"/>
         </div>
         <ui:insert name="rodape">
             <ui:include src="/resources/content/rodape.xhtml" />

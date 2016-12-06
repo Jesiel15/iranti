@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>#{msg.criarJogo}</title>
+    <title>#{msg.jogoIranti}</title>
     <link rel="icon" type="image/png" href="/resources/pix/iranti-black.jpg"/>
     <h:outputStylesheet library="style" name="normalize.css"/>
     <h:outputStylesheet library="style" name="iranti.css"/>
@@ -23,32 +23,18 @@
     </ui:insert>
     <div align="center">
         <h1>#{msg.iranti}</h1>
-        <h:messages showSummary="false" showDetail="true" class="alert alert-danger" align="center"/>
+        <h:messages showSummary="false" class="alert alert-danger" showDetail="true" align="center"/>
         <h:form>
-            <div class="form-group">
-                <h:outputLabel value="#{msg.escolherIranti}"/>
-                <h:selectOneRadio value="#{jogoMB.irantis}" class="table">
-                    <f:selectItems value="#{jogoMB.irantis}" var="i"
-                                   itemLabel="#{i.nome}" itemValue="#{i.id}"/>
-                </h:selectOneRadio>
-            </div>
-            <div class="form-group">
-                <h:outputLabel value="#{msg.dificuldade}: "/>
-                <h:selectOneMenu value="#{jogoMB.jogo.dificuldade}">
-                    <f:selectItems value="#{jogoMB.dificuldade}"/>
-                </h:selectOneMenu>
-            </div>
             <div class="iranti-btn">
-                <h:commandButton class="btn btn-danger" value="#{msg.cancelar}"
-                                 action="#{jogoMB.voltarJogo}"/>
-            </div>
-            <div class="iranti-btn">
-                <h:commandButton class="btn btn-success" value="#{msg.salvar}"
-                                 action="#{jogoMB.salvarJogo}"/>
+                <h:commandButton class="btn btn-primary" value="#{msg.users}"
+                                 action="#{usuarioMB.listarUsuarios}"/>
+                <h:commandButton class="btn btn-success" value="#{msg.cadastrarUsuario}"
+                                 action="#{usuarioMB.criarUsuario}"/>
+                <h:commandButton class="btn btn-warning" value="#{msg.editar}"
+                                 action="#{usuarioMB.editar}"/>
             </div>
         </h:form>
-        <h:graphicImage value="/resources/pix/iranti.jpg" width="350"
-                        title="#{msg.iranti}"/>
+        <h:graphicImage value="/resources/pix/iranti.jpg" width="350" title="#{msg.iranti}"/>
     </div>
     <ui:insert name="rodape">
         <ui:include src="/resources/content/rodape.xhtml"/>

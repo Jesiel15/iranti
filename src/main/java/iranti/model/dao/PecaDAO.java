@@ -24,7 +24,7 @@ public class PecaDAO {
     }
 
     private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti-project");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("iranti");
         if (entityManager == null) {
             entityManager = factory.createEntityManager();
         }

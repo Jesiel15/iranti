@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login</title>
-	<h:outputStylesheet library="style" name="normalize.css" />
-	<h:outputStylesheet library="style" name="iranti.css" />
-	<h:outputStylesheet library="style" name="bootstrap.min.css" />
-	<h:outputStylesheet library="style" name="animate.css" />
-	<h:outputStylesheet library="style" name="iranti.css" />
-	<h:outputScript library="js" name="jquery-3.1.1.min.js" />
-	<h:outputScript library="js" name="bootstrap.min.js" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Login</title>
+    <h:outputStylesheet library="style" name="normalize.css"/>
+    <h:outputStylesheet library="style" name="iranti.css"/>
+    <h:outputStylesheet library="style" name="bootstrap.min.css"/>
+    <h:outputStylesheet library="style" name="animate.css"/>
+    <h:outputStylesheet library="style" name="iranti.css"/>
+    <h:outputScript library="js" name="jquery-3.1.1.min.js"/>
+    <h:outputScript library="js" name="bootstrap.min.js"/>
 </h:head>
 <h:body>
-	<ui:insert name="cabecalho">
-		<ui:include src="/resources/content/cabecalho.xhtml" />
-	</ui:insert>
-	<h:form>
-		<p:messages id="messages" />
-		<p:panelGrid columns="2">
-			<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
-			<p:inputText id="nomeUsuario" required="true"
-						 value="#{usuarioMB.usuario.nomeUsuario}" />
+    <ui:insert name="cabecalho">
+        <ui:include src="/resources/content/cabecalho.xhtml"/>
+    </ui:insert>
+    <div align="center">
+        <h:form>
+            <p:panelGrid columns="2">
+                <p:outputLabel for="nomeUsuario" value="Nome Usuário:"/>
+                <p:inputText id="nomeUsuario" required="true"
+                             value="#{usuarioMB.usuario.nomeUsuario}"/>
 
-			<p:outputLabel for="senha" value="Senha:" />
-			<p:password id="senha" required="true"
-						value="#{usuarioMB.usuario.senha}" />
+                <p:outputLabel for="senha" value="Senha:"/>
+                <p:password id="senha" required="true"
+                            value="#{usuarioMB.usuario.senha}"/>
 
-			<p:commandButton value="Enviar"  icon="ui-icon-star"
-							 action="#{usuarioMB.Enviar}" ajax="false" >
-			</p:commandButton>
+                <p:commandButton value="Enviar" icon="ui-icon-star"
+                                 action="#{usuarioMB.Enviar}" ajax="false">
+                </p:commandButton>
 
-			<p:commandButton value="Cadastra-se"  icon="ui-icon-star"
-							 action="cadastrarUsuario.jsf" ajax="false" immediate="true" >
-			</p:commandButton>
+                <p:commandButton value="Cadastre-se" icon="ui-icon-star"
+                                 action="#{usuarioMB.cadastro}" ajax="false" immediate="true">
+                </p:commandButton>
 
-		</p:panelGrid>
-	</h:form>
-	<div align="center">
-		<h:graphicImage value="/resources/pix/iranti-black.jpg" width="350" title="Iranti Project"/>
-	</div>
-	<ui:insert name="rodape">
-		<ui:include src="/resources/content/rodape.xhtml" />
-	</ui:insert>
+            </p:panelGrid>
+        </h:form>
+    </div>
+    <div align="center">
+        <h:graphicImage value="/resources/pix/iranti-black.jpg" width="350" title="Iranti Project"/>
+    </div>
+    <ui:insert name="rodape">
+        <ui:include src="/resources/content/rodape.xhtml"/>
+    </ui:insert>
 </h:body>
 </html>
